@@ -6,12 +6,17 @@
     transform: scale(0.6);
     opacity: 0;
     transition: all .2s;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #fff;
+    line-height: 1;
   }
   ._panel.show {
     transform: scale(1);
     opacity: 1;
   }
-  ._panel header {
+  ._panel ._panel_header {
     padding: 10px;
     color: #666;
     background: #eee;
@@ -23,7 +28,7 @@
     right: 10px;
     cursor: pointer;
   }
-  ._panel main {
+  ._panel ._panel_main {
     padding: 0 10px;
   }
   ._panel .source {
