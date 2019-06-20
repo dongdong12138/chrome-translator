@@ -3,6 +3,7 @@
     "description": "Base Level Extension",
     "version": "1.0",
     "manifest_version": 2,
+    "options_page": "options.html",
     "icons": {
         "16": "images/get_started16.png",
         "32": "images/get_started32.png",
@@ -10,7 +11,7 @@
         "128": "images/get_started128.png"
     },
     "permissions": [
-        "activeTab", "storage"
+        "activeTab", "storage", "contextMenus", "tabs"
     ],
     "content_scripts": [{
         "matches": ["<all_urls>"],
@@ -26,5 +27,9 @@
         },
         "default_title": "董董翻译",
         "default_popup": "popup.html"
+    },
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
     }
 }
