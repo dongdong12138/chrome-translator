@@ -10,11 +10,21 @@
         "128": "images/get_started128.png"
     },
     "permissions": [
-        "activeTab"
+        "activeTab", "storage"
     ],
     "content_scripts": [{
         "matches": ["<all_urls>"],
         "css": ["contentScript.css"],
         "js": ["contentScript.js"]
-    }]
+    }],
+    "browser_action": {
+        "default_icon": {
+            "16": "images/get_started16.png",
+            "32": "images/get_started32.png",
+            "48": "images/get_started48.png",
+            "128": "images/get_started128.png"
+        },
+        "default_title": "董董翻译",
+        "default_popup": "popup.html"
+    }
 }

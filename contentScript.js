@@ -53,10 +53,33 @@ Panel.prototype.setPos = function (pos) {
 }
 
 let panel = new Panel()
+let panelSwitch = 'off'
+
+chrome.storage.sync.get(['switch'], function (result) {
+    console.log('Value currently is ' + result.switch);
+    if (result.switch) {
+        panelSwitch = result.switch
+    }
+});
 
 document.onmouseup = function (e) {
     var selecStr = window.getSelection().toString().trim()
     if (selecStr === '') return
-    
-    panel.translate(selecStr, {x: e.clientX, y: e.clientY})
+    if (panelSwitch === 'off') return 
+
+    panel.translate(selecStr, {
+        x: e.clientX,
+        y: e.clientY
+    })
 };
+
+chrome.runtime.onMessage.addListener(
+    function (request, sender, sendResponse) {
+        console.log(sender.tab ?
+            "from a content script:" + sender.tab.url :
+            "from the extension");
+        if (request.switch) {
+            panelSwitch = request.switch
+            sendResponse('OK');
+        }
+    });
